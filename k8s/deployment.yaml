@@ -28,4 +28,4 @@ spec:
             path: /dev/usb/lp0
         - name: biehlerscanshare
           hostPath:
-            path: /biehlercloud/Public/ScanShare
+            path: /mnt/biehlercloud/Public/ScanShare
