@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scan
+spec:
+  selector:
+    matchLabels:
+      app: scan
+  template:
+    metadata:
+      labels:
+        app: scan
+    spec:
+      containers:
+        - name: scan
+          image: gabbersepp/brother-dcp152w-scan
+          imagePullPolicy: Always
+          volumeMounts:
+          - mountPath: /dev/usb/lp0
+            name: dev-usblp0
+          - mountPath: /biehlerscanshare
+            name: biehlerscanshare
+          securityContext:
+            privileged: true
+      volumes:
+        - name: dev-usblp0
+          hostPath:
+            path: /dev/usb/lp0
+        - name: biehlerscanshare
+          hostPath:
+            path: /biehlercloud/Public/ScanShare
