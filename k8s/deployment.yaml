@@ -11,6 +11,8 @@ spec:
       labels:
         app: scan
     spec:
+      nodeSelector:
+        name: biehler
       containers:
         - name: scan
           image: gabbersepp/brother-dcp152w-scan
